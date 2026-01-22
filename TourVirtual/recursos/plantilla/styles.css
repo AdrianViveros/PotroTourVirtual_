@@ -1,0 +1,151 @@
+/* --- Variables de Color UAEMex --- */
+:root {
+    --uaem-verde: #1B5E20; /* Verde Institucional */
+    --uaem-dorado: #9E8B39; /* Dorado */
+    --uaem-negro: #1a1a1a;
+    --blanco: #ffffff;
+    --fondo-gris: #f4f4f4;
+}
+
+/* --- Reset y Estilos Base --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--fondo-gris);
+}
+
+/* --- Header --- */
+header {
+    background-color: var(--uaem-verde);
+    color: var(--blanco);
+    padding: 1rem 2rem;
+    border-bottom: 5px solid var(--uaem-dorado);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Configuración del área del logo */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre el escudo y el texto */
+}
+
+.uaem-logo {
+    height: 60px; /* Tamaño controlado del escudo */
+    width: auto;
+}
+
+.logo-area h1 {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Enlaces de navegación */
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--uaem-dorado);
+}
+
+/* --- Main y Contenedor del Tour --- */
+main {
+    flex: 1;
+    display: flex;
+    position: relative;
+    background-color: #333; /* Fondo oscuro para resaltar el tour */
+}
+
+#tour-container {
+    width: 100%;
+    height: 100%;
+    /* Patrón de fondo temporal */
+    background-image: radial-gradient(#555 1px, transparent 1px);
+    background-size: 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mensaje-espera {
+    background: rgba(255,255,255, 0.95);
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    border-top: 5px solid var(--uaem-verde);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.mensaje-espera h2 {
+    color: var(--uaem-verde);
+    margin-bottom: 0.5rem;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--uaem-negro);
+    color: #ccc;
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    border-top: 3px solid var(--uaem-dorado);
+    z-index: 10;
+}
+
+footer span {
+    color: var(--uaem-dorado);
+    font-weight: bold;
+}
+
+/* --- Adaptación para Celulares (Responsive) --- */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    .logo-area {
+        flex-direction: column;
+        margin-bottom: 15px;
+    }
+    
+    .uaem-logo {
+        height: 50px; /* Escudo un poco más pequeño en móvil */
+        margin-bottom: 5px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        width: 100%;
+        flex-wrap: wrap; /* Por si hay muchos links */
+    }
+
+    .nav-links a {
+        margin-left: 0;
+        font-size: 1.1rem;
+        padding: 5px; /* Aumenta el área táctil */
+    }
+}

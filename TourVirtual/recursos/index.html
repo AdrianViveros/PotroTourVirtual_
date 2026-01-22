@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Virtual UAEMex Zumpango</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="recursos/escudoUAEMEX.svg" alt="Logo UAEMex" class="uaem-logo">
+            <h1>UAEMex Virtual</h1>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">Inicio</a>
+            <a href="#carreras">Carreras</a>
+            <a href="#mapa">Mapa</a>
+            <a href="#ayuda">Ayuda</a>
+        </nav>
+    </header>
+
+    <main class="inicio-layout" id="inicio">
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Bienvenido a CU UAEMéx Zumpango</h2>
+                <p>Tu guía interactiva para ubicar salones, laboratorios y servicios sin perderte en el campus.</p>
+                <button id="btn-iniciar" class="boton-principal">
+                    <i class="fas fa-vr-cardboard"></i> Iniciar Recorrido
+                </button>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="card">
+                <div class="icono">📍</div>
+                <h3>Ubica tu Salón</h3>
+                <p>Encuentra tu aula exacta antes del primer día.</p>
+            </div>
+            <div class="card">
+                <div class="icono">🔬</div>
+                <h3>Laboratorios</h3>
+                <p>Conoce la ubicación y equipamiento de las áreas prácticas.</p>
+            </div>
+            <div class="card">
+                <div class="icono">🚌</div>
+                <h3>Servicios</h3>
+                <p>Transporte, cafetería, biblioteca y control escolar.</p>
+            </div>
+        </section>
+
+        <section id="carreras" class="seccion-carreras">
+            <div class="contenedor-titulo">
+                <h2>Explora por Licenciatura</h2>
+                <p>Selecciona tu carrera para ver los edificios que más usarás.</p>
+            </div>
+            
+            <div class="grid-carreras">
+                
+                <div class="carrera-card">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Administración</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-landmark"></i>
+                    <span>Ciencias Políticas y Admin. Pública</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-users"></i>
+                    <span>Sociología</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-plane-departure"></i>
+                    <span>Turismo</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-seedling"></i>
+                    <span>Ing. Agrónomo en Producción</span>
+                </div>
+
+                <div class="carrera-card">
+                    <i class="fas fa-calculator"></i>
+                    <span>Contaduría</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-balance-scale"></i>
+                    <span>Derecho</span>
+                </div>
+
+                <div class="carrera-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Ing. en Computación</span>
+                </div>
+
+                <div class="carrera-card">
+                    <i class="fas fa-user-nurse"></i>
+                    <span>Enfermería</span>
+                </div>
+                <div class="carrera-card">
+                    <i class="fas fa-brain"></i>
+                    <span>Psicología</span>
+                </div>
+
+                <div class="carrera-card">
+                    <i class="fas fa-drafting-compass"></i>
+                    <span>Diseño Industrial</span>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="mapa" class="seccion-mapa">
+            <div class="mapa-contenedor">
+                <div class="mapa-info">
+                    <h2>Mapa General del Campus</h2>
+                    <p>Una vista aérea rápida para entender la distribución de los edificios.</p>
+                    <button class="boton-secundario">Descargar PDF</button>
+                </div>
+                <div class="mapa-imagen">
+                    <div class="placeholder-mapa">
+                        <span><i class="fas fa-map"></i> Aquí cargaremos el Mapa 2D</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Tour Virtual - <span>Somos UAEMex</span></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
