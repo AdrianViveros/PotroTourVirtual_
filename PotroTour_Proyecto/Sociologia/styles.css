@@ -1,0 +1,241 @@
+/* =========================================================
+   1. VARIABLES Y CONFIGURACIÓN GENERAL
+========================================================= */
+:root {
+    --uaem-verde: #1B5E20;      /* Verde Institucional */
+    --uaem-dorado: #9E8B39;     /* Dorado Institucional */
+    --uaem-negro: #1a1a1a;
+    --blanco: #ffffff;
+    --gris-fondo: #f8fcf9;      /* Tono muy suave para secciones alternas */
+    --sombra-card: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+}
+
+body { 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+    background-color: var(--blanco); 
+    color: #333; 
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; 
+}
+
+/* Clase de utilidad para fondos alternos */
+.bg-gris, .bg-suave { background-color: var(--gris-fondo); }
+
+/* =========================================================
+   2. PRELOADER
+========================================================= */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: white; z-index: 9999;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s;
+}
+.loader-content { text-align: center; }
+.loader-logo { width: 90px; margin-bottom: 20px; animation: pulseLogo 1.5s infinite ease-in-out; }
+.loader-circle {
+    width: 40px; height: 40px; margin: 0 auto 15px auto;
+    border: 4px solid #f3f3f3; border-top: 4px solid var(--uaem-dorado);
+    border-radius: 50%; animation: spinCircle 1s linear infinite;
+}
+.loader-content p { color: #666; font-size: 0.9rem; font-weight: 500; letter-spacing: 1px; text-transform: uppercase; }
+
+@keyframes spinCircle { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+@keyframes pulseLogo { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } 100% { transform: scale(1); opacity: 1; } }
+#preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+/* =========================================================
+   3. HEADER (Encabezado Verde)
+========================================================= */
+header {
+    background-color: var(--uaem-verde);
+    color: var(--blanco);
+    padding: 0.8rem 2rem;
+    border-bottom: 4px solid var(--uaem-dorado);
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.logo-area { display: flex; align-items: center; gap: 15px; }
+.header-logo, .uaem-logo { height: 45px; width: auto; display: block; object-fit: contain; }
+.logo-brigada, .logo-secundario { filter: brightness(0) invert(1); opacity: 0.95; height: 40px; width: auto; } 
+.logo-potro { height: 45px; width: auto; }
+
+.separador-vertical { height: 35px; width: 2px; background-color: rgba(255,255,255,0.3); margin: 0 10px; }
+.titulo-mapa { font-size: 1rem; font-weight: 700; text-transform: uppercase; margin: 0; }
+.detalle-2d { font-weight: 300; opacity: 0.9; }
+
+/* BOTÓN SALIR */
+.btn-home-simple { 
+    display: flex; align-items: center; gap: 8px;
+    background-color: rgba(255, 255, 255, 0.15); 
+    color: var(--blanco);
+    padding: 8px 20px;       
+    border-radius: 50px;     
+    text-decoration: none;
+    font-size: 0.95rem; font-weight: 600;
+    border: 1px solid transparent; 
+    transition: all 0.3s ease;
+}
+.btn-home-simple:hover { 
+    background-color: var(--uaem-dorado); color: var(--uaem-negro);             
+    transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* =========================================================
+   4. HERO SECTIONS (IMÁGENES POR CARRERA)
+========================================================= */
+.hero-carrera {
+    position: relative;
+    background-size: cover; background-position: center; 
+    background-attachment: fixed; /* Parallax */
+    padding: 100px 20px; text-align: center; color: white;
+}
+
+/* Imágenes específicas */
+.hero-bg-admin { background-image: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-agro { background-image: url('https://images.unsplash.com/photo-1625246333195-5519a124648f?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-politicas { background-image: url('https://images.unsplash.com/photo-1541872703-74c5963631df?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-compu { background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-contaduria { background-image: url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1626&auto=format&fit=crop'); }
+.hero-bg-derecho { background-image: url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-diseno { background-image: url('https://images.unsplash.com/photo-1581092921461-eab62e97a783?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-enfermeria { background-image: url('https://images.unsplash.com/photo-1584634731339-252c581abfc5?q=80&w=1470&auto=format&fit=crop'); }
+.hero-bg-psicologia { background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=1470&auto=format&fit=crop'); }
+/* NUEVO - Sociología */
+.hero-bg-sociologia { background-image: url('https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=1469&auto=format&fit=crop'); }
+
+.hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(27, 94, 32, 0.8); z-index: 1; }
+.hero-content, .contenedor-titulo { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; }
+.hero-carrera h1 { font-size: 2.5rem; margin-bottom: 15px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-weight: 700; }
+.linea-dorada { width: 80px; height: 5px; background: var(--uaem-dorado); margin: 0 auto 20px; border-radius: 10px; }
+.mision-texto, .objetivo-texto { font-style: italic; font-size: 1.1rem; color: #f0f0f0; line-height: 1.6; }
+.icon-principal { font-size: 3rem; color: var(--uaem-dorado); margin-bottom: 15px; display: inline-block; }
+
+/* =========================================================
+   5. SECCIONES Y TARJETAS
+========================================================= */
+.seccion-info, .seccion-mapa, .seccion-recursos { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+.subtitulo { color: var(--uaem-verde); margin-bottom: 30px; font-size: 1.8rem; border-left: 5px solid var(--uaem-dorado); padding-left: 15px; }
+
+/* Animación Base */
+.card-objetivo, .card-extra, .card-tarea, .egreso-box, .contenedor-mapa, .area-item {
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.6s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+    will-change: transform, opacity;
+}
+
+/* Grids */
+.grid-objetivos, .grid-extras, .grid-tareas, .grid-areas { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; 
+}
+
+/* Áreas de Desempeño */
+.area-item {
+    background: white; padding: 20px; border-radius: 10px; text-align: center;
+    border: 1px solid #eee; box-shadow: var(--sombra-card); color: var(--uaem-verde); font-weight: 600; font-size: 1.1rem;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.area-item:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); background: var(--uaem-verde); color: white; }
+
+/* Tarjetas Genéricas */
+.card-objetivo, .card-extra { 
+    background: white; padding: 25px; border-radius: 12px; box-shadow: var(--sombra-card); 
+}
+.card-objetivo { border-top: 4px solid var(--uaem-verde); display: flex; flex-direction: column; }
+.card-objetivo:hover { transform: translateY(-5px) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+.card-objetivo h3 { color: var(--uaem-verde); margin-bottom: 15px; font-size: 1.2rem; }
+
+/* Tarjetas Extras (Detalles) */
+.card-extra { text-align: center; border-top: 4px solid var(--uaem-dorado); display: flex; flex-direction: column; align-items: center; }
+.card-extra:hover { transform: translateY(-5px) !important; box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+.icono-top { width: 50px; height: 50px; background: var(--uaem-verde); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; font-size: 1.2rem; }
+.dato-item { width: 100%; display: flex; justify-content: space-between; border-bottom: 1px dashed #eee; padding: 8px 0; margin-bottom: 5px; font-size: 0.95rem; }
+.dato-item.center-text { justify-content: center; border: none; }
+.dato-item .label { color: #666; font-weight: 600; }
+.dato-item .valor { color: #333; font-weight: 700; }
+.valor-destacado { color: var(--uaem-verde); font-size: 1.4rem; font-weight: bold; }
+.info-texto { font-size: 0.9rem; color: #666; margin: 10px 0; }
+.divider-mini { width: 40px; height: 2px; background: #eee; margin: 15px auto; }
+.nota-chica { font-size: 0.85rem; color: #888; font-style: italic; }
+
+/* Sedes */
+.card-full-width { grid-column: 1 / -1; align-items: flex-start; text-align: left; border-top-color: var(--uaem-verde); }
+.header-sedes { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; border-bottom: 2px solid #eee; width: 100%; padding-bottom: 10px; }
+.header-sedes i { color: var(--uaem-dorado); font-size: 1.4rem; }
+.lista-sedes { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 10px 30px; list-style: none; padding: 0; }
+.lista-sedes li { position: relative; padding-left: 20px; font-size: 0.95rem; color: #444; margin-bottom: 5px; }
+.lista-sedes li::before { content: '📍'; position: absolute; left: 0; font-size: 0.9rem; }
+
+/* Tareas / Funciones */
+.card-tarea {
+    background: white; padding: 25px; border-radius: 12px;
+    border-top: 4px solid var(--uaem-verde);
+    box-shadow: var(--sombra-card);
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.card-tarea:hover { transform: translateY(-5px) !important; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+.card-tarea i { font-size: 2rem; color: var(--uaem-dorado); margin-bottom: 15px; }
+.card-tarea h3 { color: var(--uaem-verde); margin-bottom: 10px; font-size: 1.1rem; }
+.card-tarea p { font-size: 0.95rem; line-height: 1.4; color: #444; }
+
+/* Mapa Curricular */
+.contenedor-mapa { 
+    position: relative; border-radius: 15px; overflow: hidden; 
+    box-shadow: var(--sombra-card); cursor: pointer; max-width: 1000px; margin: 0 auto 40px; border: 1px solid #ddd;
+}
+.img-mapa { width: 100%; display: block; transition: 0.5s; }
+.contenedor-mapa:hover .img-mapa { transform: scale(1.03); filter: brightness(0.9); }
+.overlay-instruccion { 
+    position: absolute; bottom: 0; left: 0; width: 100%; 
+    background: rgba(27, 94, 32, 0.8); color: white; text-align: center; 
+    padding: 10px; opacity: 0; transition: 0.3s; font-weight: 600;
+}
+.contenedor-mapa:hover .overlay-instruccion { opacity: 1; }
+.contenedor-descarga { text-align: center; margin-bottom: 20px; }
+.btn-pdf { 
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--uaem-verde); color: white; padding: 15px 30px; 
+    text-decoration: none; border-radius: 50px; font-weight: 600; 
+    box-shadow: 0 4px 15px rgba(27, 94, 32, 0.3); transition: 0.3s; 
+}
+.btn-pdf:hover { background: var(--blanco); color: var(--uaem-verde); box-shadow: 0 6px 20px rgba(27, 94, 32, 0.4); transform: translateY(-3px); border: 1px solid var(--uaem-verde); }
+
+/* =========================================================
+   6. FOOTER
+========================================================= */
+footer {
+    background-color: #1a1a1a; color: #e0e0e0; border-top: 5px solid var(--uaem-dorado);
+    padding-top: 3rem; margin-top: auto; font-size: 0.95rem;
+}
+.footer-container { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; gap: 4rem; padding: 0 1rem 2rem 1rem; }
+.footer-col { min-width: 250px; }
+.footer-col h4 {
+    color: var(--uaem-dorado); font-size: 1.1rem; margin-bottom: 1.2rem;
+    position: relative; display: inline-block; text-transform: uppercase;
+}
+.footer-col h4::after { content: ''; display: block; width: 40px; height: 2px; background: var(--uaem-verde); margin-top: 5px; }
+.footer-link { display: flex; align-items: center; gap: 12px; color: #bbb; text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
+.footer-link:hover { color: var(--uaem-dorado); transform: translateX(5px); }
+.footer-text { display: flex; align-items: center; gap: 12px; color: #bbb; margin-bottom: 15px; }
+.footer-copyright { background-color: #111; text-align: center; padding: 1.5rem; border-top: 1px solid #333; color: #666; font-size: 0.85rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    header { flex-direction: column; gap: 10px; padding: 15px; }
+    .titulo-mapa { font-size: 0.9rem; margin-top: 5px; }
+    .separador-vertical { display: none; }
+    .hero-carrera { padding: 60px 20px; }
+    .hero-carrera h1 { font-size: 1.8rem; }
+    .footer-container { flex-direction: column; gap: 2rem; text-align: left; }
+    .header-logo { height: 40px; }
+    .lista-sedes { grid-template-columns: 1fr; }
+}

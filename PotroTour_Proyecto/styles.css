@@ -1,0 +1,1184 @@
+/* =========================================
+   1. VARIABLES GLOBALES (Identidad UAEMex)
+   ========================================= */
+:root {
+    --uaem-verde: #1B5E20;       /* Verde Institucional Oscuro */
+    --uaem-verde-claro: #2e7d32; /* Verde para hovers */
+    --uaem-dorado: #9E8B39;      /* Dorado Institucional */
+    --uaem-dorado-brillo: #bfa846;
+    --uaem-negro: #1a1a1a;
+    --texto-gris: #555;
+    --blanco: #ffffff;
+    --fondo-gris: #f4f6f8;       /* Gris muy suave para fondos */
+    --sombra-suave: 0 4px 6px rgba(0,0,0,0.1);
+    --sombra-fuerte: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* --- BARRA DE SCROLL PERSONALIZADA (Webkit) --- */
+::-webkit-scrollbar {
+    width: 10px; 
+}
+::-webkit-scrollbar-track {
+    background: #e0e0e0; 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--uaem-verde); 
+    border-radius: 5px; 
+    border: 2px solid #e0e0e0; 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--uaem-dorado); 
+}
+
+/* =========================================
+   2. RESET Y ESTILOS BASE
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+html { scroll-behavior: smooth; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--fondo-gris);
+    color: var(--uaem-negro);
+    overflow-x: hidden;
+    /* SEGURIDAD: Evita selección de texto */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* =========================================
+   3. HEADER Y NAVEGACIÓN
+   ========================================= */
+header {
+    background-color: var(--uaem-verde);
+    color: var(--blanco);
+    padding: 0.8rem 2rem;
+    border-bottom: 4px solid var(--uaem-dorado);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1001;
+}
+
+.uaem-logo {
+    height: 55px;
+    width: auto;
+    filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3));
+}
+
+.logo-area h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-left: 5px;
+}
+
+.logo-secundario {
+    height: 45px;
+    width: auto;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.2));
+}
+
+.logo-dark-fix {
+    filter: invert(1) brightness(1.5);
+    filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.3));
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    transition: all 0.3s ease;
+}
+
+.nav-links a {
+    color: var(--blanco);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--uaem-dorado);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after { width: 100%; }
+
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--blanco);
+    z-index: 1002;
+    padding: 5px;
+}
+
+/* =========================================
+   4. SECCIÓN HERO (Bienvenida)
+   ========================================= */
+.hero {
+    background: linear-gradient(rgba(27, 94, 32, 0.7), rgba(0, 0, 0, 0.7)), url('recursos/imagenarriba.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--blanco);
+    padding: 4rem 2rem;
+    text-align: center;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--uaem-dorado);
+}
+
+.hero-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    gap: 2rem;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left; 
+    max-width: 600px;
+    z-index: 2;
+}
+
+.hero-content h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+}
+
+.hero-mascot {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.hero-mascot img {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+.boton-principal {
+    background-color: var(--uaem-dorado);
+    color: var(--blanco);
+    border: none;
+    padding: 14px 40px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--sombra-suave);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    animation: pulse-gold 2s infinite;
+}
+
+.boton-principal:hover {
+    background-color: var(--uaem-dorado-brillo);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(158, 139, 57, 0.4);
+}
+
+/* =========================================
+   5. FEATURES (Tarjetas Informativas)
+   ========================================= */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(to bottom, #ffffff 0%, #f4f6f8 100%);
+    flex-wrap: wrap;
+    margin-top: -50px;
+    position: relative;
+    z-index: 5;
+}
+
+.card {
+    background: var(--blanco);
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    width: 320px;
+    text-align: center;
+    box-shadow: var(--sombra-suave);
+    border-bottom: 4px solid var(--uaem-verde);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.card .icono {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.card h3 {
+    color: var(--uaem-verde);
+    margin-bottom: 0.8rem;
+    font-size: 1.4rem;
+}
+
+.card:hover h3, 
+.card:hover p, 
+.card:hover .icono {
+    color: var(--blanco);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+    transition: all 0.3s ease;
+}
+
+#card-salon:hover { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('recursos/salon.jpg'); background-size: cover; background-position: center; }
+#card-labs:hover { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('recursos/laboratorio.jpg'); background-size: cover; background-position: center; }
+#card-servicios:hover { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('recursos/cafeteria.jpg'); background-size: cover; background-position: center; }
+
+/* =========================================
+   6. SECCIÓN IDENTIDAD (MISIÓN/VISIÓN)
+   ========================================= */
+.seccion-identidad {
+    padding: 5rem 2rem;
+    background-color: var(--fondo-gris);
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.seccion-identidad::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(var(--uaem-dorado) 10%, transparent 10%);
+    background-size: 30px 30px;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.identidad-container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.identidad-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.identidad-header h2 {
+    font-size: 2.5rem;
+    color: var(--uaem-verde);
+    margin-bottom: 0.5rem;
+}
+
+.tabs-control {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: -25px;
+    position: relative;
+    z-index: 2;
+}
+
+.tab-btn {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    background: #e0e0e0;
+    color: #666;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tab-btn.active {
+    background: var(--uaem-verde);
+    color: var(--blanco);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(27, 94, 32, 0.4);
+}
+
+.display-board {
+    background: var(--blanco);
+    padding: 4rem 3rem 3rem 3rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    border-top: 5px solid var(--uaem-dorado);
+    min-height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.content-block {
+    display: none;
+    animation: fadeInSlide 0.6s ease-out;
+    position: relative;
+    z-index: 1; 
+}
+
+.content-block.active { display: block; }
+
+@keyframes fadeInSlide {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.texto-destacado h3 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--uaem-negro);
+}
+
+.highlight {
+    color: var(--uaem-verde);
+    border-bottom: 3px solid var(--uaem-dorado);
+}
+
+.texto-destacado p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+.icono-fondo {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    font-size: 10rem;
+    color: rgba(0,0,0,0.03);
+    transform: rotate(-15deg);
+    pointer-events: none;
+}
+
+.deco-esquina {
+    position: absolute;
+    top: 0;
+    width: 50px;
+    max-width: 25%;
+    height: auto;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.95;
+}
+
+.esquina-izq { left: 0; border-top-left-radius: 20px; }
+.esquina-der { right: 0; border-top-right-radius: 20px; }
+
+/* =========================================
+   7. SECCIÓN CARRERAS (Actualizado)
+   ========================================= */
+.seccion-carreras {
+    padding: 5rem 2rem;
+    background-color: #f1f8e9; 
+    background-image: radial-gradient(#1B5E20 0.5px, transparent 0.5px);
+    background-size: 20px 20px;
+    opacity: 1;
+}
+
+.contenedor-titulo {
+    text-align: center;
+    margin-bottom: 3.5rem;
+}
+
+.contenedor-titulo h2 {
+    color: var(--uaem-verde);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.grid-carreras {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrado perfecto */
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.carrera-link {
+    flex: 0 1 250px;
+    min-width: 240px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.carrera-card {
+    background-color: var(--fondo-gris);
+    border: 1px solid #ddd;
+    border-top: 5px solid var(--uaem-dorado);
+    border-radius: 12px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+/* EFECTO HOVER: GREEN GLOW */
+.carrera-card:hover {
+    background-color: var(--uaem-verde);
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(27, 94, 32, 0.6), 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-color: #2e7d32;
+    border-top-color: var(--uaem-dorado-brillo);
+}
+
+.carrera-card i {
+    font-size: 2.8rem;
+    color: var(--uaem-verde);
+    transition: color 0.3s;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+.carrera-card span {
+    font-weight: 700;
+    color: var(--uaem-negro);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.carrera-card:hover i, 
+.carrera-card:hover span {
+    color: var(--blanco);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.carrera-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.6s;
+}
+
+.carrera-card:hover::before { left: 100%; }
+
+/* =========================================
+   8. SECCIÓN MAPA
+   ========================================= */
+.seccion-mapa {
+    padding: 6rem 2rem;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+    border-top: 1px solid rgba(158, 139, 57, 0.2);
+}
+
+.mapa-contenedor-hub {
+    background: var(--blanco);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.hub-header h2 {
+    color: var(--uaem-verde);
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.hub-header p {
+    color: #666;
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.grid-opciones {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+.opcion-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 400px;
+    background: var(--fondo-gris);
+    padding: 2rem;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform-style: preserve-3d;
+    will-change: transform;
+}
+
+.opcion-card.aparecer { opacity: 1; transform: translateY(0); }
+
+.opcion-card:hover {
+    transform: translateY(-5px);
+    background: #fff;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.pixel-style:hover { border-color: #e91e63; }
+.pixel-style .icono-grande { background: #fce4ec; color: #e91e63; }
+
+.vr-style:hover { border-color: #00bcd4; }
+.vr-style .icono-grande { background: #e0f7fa; color: #00bcd4; }
+
+.icono-grande {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.opcion-card:hover .icono-grande { transform: scale(1.1) rotate(5deg); }
+
+.opcion-card h3 { color: var(--uaem-negro); font-size: 1.4rem; margin-bottom: 10px; }
+.opcion-card p { color: #555; font-size: 0.95rem; margin-bottom: 20px; line-height: 1.5; }
+
+.opcion-card .icono-grande, 
+.opcion-card h3, 
+.opcion-card p, 
+.opcion-card .btn-ver {
+    transform: translateZ(20px); transition: transform 0.3s;
+}
+
+.efecto-brillo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4), transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    transition: opacity 0.3s;
+    border-radius: 15px;
+    z-index: 10;
+}
+
+.btn-ver {
+    margin-top: auto;
+    background: var(--uaem-verde);
+    color: var(--blanco);
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.opcion-card:hover .btn-ver { background: var(--uaem-dorado); }
+
+/* =========================================
+   9. FOOTER (PROFESIONAL)
+   ========================================= */
+footer {
+    background-color: var(--uaem-negro);
+    color: #bdbdbd; /* Gris claro para texto */
+    padding: 4rem 2rem 1rem 2rem;
+    border-top: 5px solid var(--uaem-dorado);
+    margin-top: auto;
+    font-size: 0.95rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h3 {
+    color: var(--blanco);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.footer-section h4 {
+    color: var(--uaem-dorado); /* Títulos en dorado */
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+/* Pequeña línea debajo de los títulos */
+.footer-section h4::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 2px;
+    background: var(--uaem-verde);
+    margin-top: 5px;
+}
+
+.footer-section p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    display: block;
+    color: #bdbdbd;
+    text-decoration: none;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-section a:hover {
+    color: var(--uaem-dorado);
+    transform: translateX(5px); /* Efecto de movimiento a la derecha */
+}
+
+.footer-section i {
+    color: var(--uaem-verde);
+}
+
+/* Barra inferior de copyright */
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom span {
+    color: var(--uaem-dorado);
+    font-weight: bold;
+}
+
+/* Ajuste Móvil para el Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .footer-section {
+        text-align: center; /* Centrar todo en móvil */
+    }
+    .footer-section h4::after {
+        margin: 5px auto 0 auto; /* Centrar la línea decorativa */
+    }
+    .footer-section a {
+        justify-content: center; /* Centrar los enlaces */
+    }
+}
+
+footer span { color: var(--uaem-dorado); font-weight: bold; }
+
+/* =========================================
+   10. CHATBOT INTERACTIVO (POTROBOT)
+   ========================================= */
+.chatbot-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9999;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    background: var(--uaem-verde);
+    border-radius: 50%;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, background 0.3s;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-toggle-btn:hover {
+    transform: scale(1.1);
+    background: var(--uaem-dorado);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4444;
+    color: white;
+    font-size: 0.8rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid white;
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    width: 350px;
+    height: 450px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #eee;
+}
+
+.chat-window.active { transform: scale(1); }
+
+.chat-header {
+    background: var(--uaem-verde);
+    padding: 15px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 3px solid var(--uaem-dorado);
+}
+
+.chat-avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    background: white;
+    object-fit: cover;
+}
+
+.chat-info h4 { font-size: 1rem; margin-bottom: 2px; }
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #00e676;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.close-chat {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Cuerpo del Chat (Interactivo) */
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    background-color: #f5f5f5;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    scroll-behavior: smooth;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 15px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mensajes del Bot (Izquierda) */
+.bot-message {
+    background: white;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+    color: #333;
+}
+
+/* Mensajes del Usuario (Derecha) */
+.user-message {
+    background: #e8f5e9;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+    color: #1B5E20;
+    border: 1px solid #c8e6c9;
+}
+
+.message a {
+    color: var(--uaem-dorado);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.chat-footer {
+    padding: 10px;
+    background: white;
+    border-top: 1px solid #eee;
+    display: flex;
+    gap: 10px;
+}
+
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    outline: none;
+    background: #fafafa;
+}
+
+.chat-footer button {
+    background: var(--uaem-verde);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.chat-footer button:hover { background: var(--uaem-dorado); }
+
+/* =========================================
+   11. ANIMACIONES Y EXTRAS GLOBALES
+   ========================================= */
+#texto-maquina {
+    border-right: 3px solid var(--uaem-dorado);
+    white-space: normal;
+    display: inline-block;
+    min-height: 1.2em;
+}
+
+@keyframes pulse-gold {
+    0% { box-shadow: 0 0 0 0 rgba(158, 139, 57, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(158, 139, 57, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(158, 139, 57, 0); }
+}
+
+/* =========================================
+   12. RESPONSIVE DESIGN (Móvil Optimizado)
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* --- HEADER COMPACTO --- */
+    header { padding: 0.8rem 1rem; }
+    .logo-area h1 { font-size: 1rem; } /* Texto del logo más chico */
+    .uaem-logo { height: 40px; } /* Logos ajustados */
+    .logo-secundario { height: 35px; }
+    
+    .hamburger { display: block; font-size: 1.5rem; }
+
+    /* Menú lateral */
+    .nav-links {
+        position: fixed;
+        top: 65px; /* Ajuste altura header */
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 65px);
+        background-color: var(--uaem-verde);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 2rem;
+        gap: 1.5rem;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    }
+    .nav-links.active { right: 0; }
+    .nav-links a { font-size: 1.1rem; width: 100%; text-align: center; padding: 12px 0; }
+
+    /* --- HERO (BIENVENIDA) --- */
+    .hero { min-height: auto; padding: 3rem 1rem; }
+    .hero-layout { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
+    
+    .hero-content { padding-top: 0.5rem; }
+    .hero-content h2 { font-size: 1.8rem; margin-bottom: 0.5rem; } /* Título más manejable */
+    .hero-content p { font-size: 1rem; line-height: 1.4; }
+    
+    .hero-mascot img { max-width: 160px; margin-bottom: 0.5rem; }
+
+    /* Botón Hero más chico */
+    .boton-principal {
+        padding: 10px 25px; /* Menos relleno */
+        font-size: 0.95rem;
+        width: auto;
+    }
+
+    /* --- FEATURES (TARJETAS RÁPIDAS) --- */
+    .features { padding: 2rem 1rem; gap: 1rem; margin-top: 0; }
+    .card {
+        width: 100%; /* Ocupan ancho disponible */
+        padding: 1.5rem 1rem; /* Menos aire interno */
+        display: flex; /* Flex para poner icono y texto lado a lado si quieres */
+        flex-direction: column; /* (Opcional) Mantenemos columna para legibilidad */
+        align-items: center;
+    }
+    .card .icono { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .card h3 { font-size: 1.2rem; }
+
+    /* --- IDENTIDAD (TABS) --- */
+    .seccion-identidad { padding: 3rem 1rem; }
+    .identidad-header h2 { font-size: 1.8rem; }
+    
+    /* Botones de pestañas compactos */
+    .tabs-control { gap: 10px; width: 100%; }
+    .tab-btn {
+        padding: 8px 15px; /* Botones más flacos */
+        font-size: 0.9rem;
+        flex: 1; /* Se reparten el espacio 50/50 */
+        justify-content: center;
+    }
+    
+    .display-board { padding: 2.5rem 1.5rem 1.5rem 1.5rem; }
+    .deco-esquina { width: 50px; opacity: 0.5; }
+
+    /* --- CARRERAS: ¡AQUÍ ESTÁ LA MAGIA! (2 COLUMNAS) --- */
+    .seccion-carreras { padding: 3rem 1rem; }
+    
+    .grid-carreras {
+        gap: 10px; /* Menos espacio entre cuadritos */
+    }
+
+    /* Forzamos 2 columnas en lugar de 1 lista eterna */
+    .carrera-link {
+        flex: 0 1 calc(50% - 5px); /* 50% del ancho menos la mitad del gap */
+        min-width: 0; /* Ignora el min-width de escritorio */
+    }
+
+    .carrera-card {
+        padding: 1.5rem 0.5rem; /* Tarjetas compactas */
+        gap: 10px;
+    }
+    
+    .carrera-card i { font-size: 2rem; } /* Icono más chico */
+    .carrera-card span { font-size: 0.8rem; letter-spacing: 0; } /* Texto ajustado */
+
+    /* --- MAPA --- */
+    .seccion-mapa { padding: 3rem 1rem; }
+    .mapa-contenedor-hub { padding: 2rem 1rem; }
+    
+    .opcion-card {
+        min-width: 100%; /* Aquí sí apilamos porque necesitan espacio */
+        padding: 1.5rem;
+    }
+    .icono-grande { width: 60px; height: 60px; font-size: 2rem; margin-bottom: 0.5rem; }
+    .opcion-card h3 { font-size: 1.2rem; }
+    
+    .btn-ver {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+
+    /* --- CHATBOT MÓVIL --- */
+    .chatbot-container { bottom: 15px; right: 15px; }
+    
+    /* Botón flotante más chico */
+    .chat-toggle-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+    
+    /* Ventana de chat ocupa casi todo el ancho */
+    .chat-window {
+        width: calc(100vw - 40px); /* Ancho pantalla menos margenes */
+        right: 0; /* Alineado a la derecha relativa */
+        bottom: 65px;
+        height: 55vh; /* Altura controlada */
+        border-radius: 15px;
+    }
+}
+
+/* =========================================
+   15. PRELOADER (PANTALLA DE CARGA)
+   ========================================= */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--blanco);
+    z-index: 10000; /* Por encima de TODO, incluso del chat */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Cuando JS diga que terminó, ocultamos esto */
+#preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-content {
+    text-align: center;
+    position: relative;
+}
+
+.loader-logo {
+    width: 80px;
+    margin-bottom: 20px;
+    animation: palpito 1.5s infinite ease-in-out;
+}
+
+.loader-circle {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(27, 94, 32, 0.1); /* Verde suave */
+    border-top: 4px solid var(--uaem-dorado); /* Dorado girando */
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    animation: girar 1s linear infinite;
+}
+
+.loader-content p {
+    color: var(--uaem-verde);
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    animation: parpadeo 1.5s infinite;
+}
+
+@keyframes girar {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes palpito {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes parpadeo {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
