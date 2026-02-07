@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mapa Interactivo - CU UAEM Zumpango</title>
+    
+    <link rel="icon" href="recursos/mascota2.png" type="image/png">
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="estilos_mapa.css"> 
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="recursos/brigadapotro.png" alt="Cargando..." class="loader-logo">
+            <div class="loader-circle"></div>
+            <p>Cargando Campus Virtual...</p>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-area">
+            <img src="recursos/escudoUAEMEX.svg" alt="Logo UAEMex" class="uaem-logo">
+            <img src="recursos/brigadaslogo.png" alt="Logo Brigadas" class="logo-secundario logo-dark-fix">
+            <div class="separador-vertical"></div>
+            <h1 class="titulo-mapa">MAPA GENERAL <span class="detalle-2d">| VISTA 2D</span></h1>
+        </div>
+
+        <nav class="nav-links">
+            <a href="../index.html" class="btn-home-simple" title="Volver al Inicio">
+                <i class="fas fa-sign-out-alt"></i> <span>Salir</span>
+            </a>
+        </nav>
+    </header>
+
+    <section class="intro-section">
+        <div class="intro-card">
+            <div class="card-icon">
+                <i class="fas fa-university"></i>
+            </div>
+            <div class="card-content">
+                <h2>Conoce tu Universidad</h2>
+                <p>Explora cada rincón de nuestro Centro Universitario. Haz clic en los edificios del mapa interactivo para ver fotos reales, horarios y servicios.</p>
+                
+                <div class="scroll-indicator">
+                    <i class="fas fa-chevron-down animate-bounce"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="contenedor-mapa" id="contenedorMapaPrincipal">
+        
+        <button id="btnFullscreen" class="btn-fullscreen" title="Pantalla Completa">
+            <i class="fas fa-expand"></i>
+        </button>
+
+        <div class="map-viewport" id="mapViewport">
+            <div class="map-wrapper" id="mapWrapper">
+                <img src="recursos/mapa.webp" id="base-map" alt="Mapa Base UAEMex">
+                
+                <img src="recursos/biblioteca.png" class="map-overlay" data-id="biblioteca" data-title="Biblioteca" style="top: 39%; left: 83%; --w: 250px;">
+                <img src="recursos/cafeteria.png"  class="map-overlay" data-id="cafeteria"  data-title="Cafetería"  style="top: 92%; left: 55%; --w: 250px;">
+                <img src="recursos/cancha.png"     class="map-overlay" data-id="cancha"     data-title="Arcotecho"  style="top: 49%; left: 51%; --w: 260px;">
+                <img src="recursos/edificioa.png"  class="map-overlay" data-id="edificioa"  data-title="Edificio A" style="top: 43%; left: 25%; --w: 270px;">
+                <img src="recursos/edificiob.png"  class="map-overlay" data-id="edificiob"  data-title="Edificio B" style="top: 79%; left: 25%; --w: 270px;">
+                <img src="recursos/edificioc.png"  class="map-overlay" data-id="edificioc"  data-title="Edificio C" style="top: 75%; left: 83%; --w: 270px;">
+                <img src="recursos/edificiod.png"  class="map-overlay" data-id="edificiod"  data-title="Edificio D" style="top: 12%; left: 80%; --w: 290px;">
+                <img src="recursos/elementos.png"  class="map-overlay" data-id="elementos"  data-title="Áreas Comunes" style="top: 43%; left: 69%; --w: 90px;">
+                <img src="recursos/estatua2.png"   class="map-overlay" data-id="estatua"    data-title="Monumentos" style="top: 35%; left: 69%; --w: 90px;">
+                <img src="recursos/tutorias.png"   class="map-overlay" data-id="tutorias"   data-title="Tutorías"   style="top: 92%; left: 80%; --w: 260px;">
+                <img src="recursos/gimnacio.png"   class="map-overlay" data-id="gimnacio"   data-title="Gimnasio"   style="top: 75%; left: 69%; --w: 100px;">
+            </div>
+            
+            <div class="gesture-hint" id="gestureHint">
+                <i class="fas fa-hand-pointer"></i> Arrastra para explorar
+            </div>
+        </div>
+    </main>
+
+    <section class="seccion-mapa-real">
+        <div class="contenedor-real-grid">
+            <div class="columna-mapa">
+                <div id="map-osm"></div>
+            </div>
+
+            <div class="columna-info">
+                <h3><i class="fas fa-map-marked-alt"></i> Ubicación Geográfica</h3>
+                <p class="direccion-principal">
+                    Camino Viejo a Jilotzingo S/N, Valle Hermoso, 55600 Zumpango de Ocampo, Méx.
+                </p>
+                
+                <ul class="datos-contacto-real">
+                    <li>
+                        <i class="fas fa-bus"></i> 
+                        <span><strong>Transporte:</strong> Camiones directos ("Universidad UAEM Zumpango") saliendo atrás de Coppel.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-clock"></i> 
+                        <span><strong>Horario:</strong> Lunes a Viernes 7:00 - 19:00 hrs.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i> 
+                        <span><strong>Email:</strong> cuzumpango@uaemex.mx</span>
+                    </li>
+                </ul>
+                
+                <a href="https://goo.gl/maps/TuLinkDeGoogleMaps" target="_blank" class="btn-ruta-google">
+                    <i class="fas fa-location-arrow"></i> Ver Ruta en Google Maps
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="chatbot-container">
+        <div class="chat-window" id="chat-window">
+            <div class="chat-header">
+                <div class="chat-avatar"><img src="recursos/mascota2.png" alt="Avatar"></div>
+                <div class="chat-info" style="color: white;">
+                    <h4 style="margin:0; font-size:0.9rem;">Asistente Potro</h4>
+                </div>
+                <button id="close-chat" class="close-chat" style="position:static; width:auto; height:auto;">&times;</button>
+            </div>
+            <div class="chat-body" id="chat-body">
+                <div class="message bot-message"><p>¡Hola! 🐴 Toca los edificios del mapa de arriba para ver fotos.</p></div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Escribe aquí..." autocomplete="off">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-toggle-btn" id="chat-toggle"><i class="fas fa-comment-dots"></i></button>
+    </div>
+
+    <div id="modal-info" class="modal-overlay">
+        <div class="modal-content">
+            <button class="close-btn">&times;</button>
+            <div class="modal-header-visual">
+                <h2 id="modal-titulo">Título del Lugar</h2>
+            </div>
+            <div class="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Vista Completa">
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Enlaces Oficiales</h4>
+                <a href="https://cuzumpango.uaemex.mx/" target="_blank" class="footer-link">
+                    <i class="fas fa-globe"></i> Sitio Web Zumpango
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100057331274533" target="_blank" class="footer-link">
+                    <i class="fab fa-facebook"></i> Facebook Oficial
+                </a>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <div class="footer-text">
+                    <i class="fas fa-envelope" style="color:var(--uaem-dorado); margin-top:4px;"></i> 
+                    <span>cuzumpango@uaemex.mx</span>
+                </div>
+                <div class="footer-text">
+                    <i class="fas fa-map-marker-alt" style="color:var(--uaem-dorado); margin-top:4px;"></i> 
+                    <span>Cam. Viejo a Jilotzingo S/N, Vista Hermosa, 55600 Zumpango, Méx.</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-copyright">
+            <p>&copy; 2026 Tour Virtual UAEMex Zumpango - Desarrollado por Brigada Potro.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
